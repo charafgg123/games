@@ -1,0 +1,137 @@
+:root {
+  --bg: #0f1220;
+  --card: #1a1f35;
+  --card-hover: #222949;
+  --text: #eef0fa;
+  --muted: #98a0c0;
+  --accent: #7c5cff;
+  --accent-2: #20d3a0;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Cairo", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container { width: min(1100px, 92%); margin-inline: auto; }
+
+.hero {
+  padding: 56px 0 36px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, #2b2166 0%, transparent 70%);
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; }
+.hero p { color: var(--muted); margin-top: 6px; }
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.controls input, .controls select {
+  font: inherit;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid #2e3558;
+  border-radius: 12px;
+  padding: 12px 16px;
+  min-width: 220px;
+  outline: none;
+}
+.controls input:focus, .controls select:focus { border-color: var(--accent); }
+
+main { flex: 1; padding: 24px 0 48px; }
+.count { color: var(--muted); margin-bottom: 14px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover { transform: translateY(-4px); background: var(--card-hover); }
+.card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #0b0e1a; }
+.card-body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.card h3 { font-size: 1.1rem; }
+.tag {
+  align-self: flex-start;
+  font-size: .75rem;
+  background: rgba(124, 92, 255, .18);
+  color: #b9a8ff;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+.card p { color: var(--muted); font-size: .9rem; flex: 1; }
+
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), #5a3fe0);
+  color: #fff;
+  text-decoration: none;
+  padding: 11px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  transition: filter .2s;
+}
+.btn:hover { filter: brightness(1.15); }
+
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+/* نافذة التفاصيل */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(5, 7, 16, .8);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  z-index: 10;
+}
+.modal[hidden] { display: none; }
+.modal-box {
+  position: relative;
+  background: var(--card);
+  border-radius: var(--radius);
+  width: min(720px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+}
+.modal-box > img { width: 100%; max-height: 360px; object-fit: cover; display: block; }
+.modal-close {
+  position: absolute; top: 12px; left: 12px;
+  width: 38px; height: 38px;
+  border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, .6);
+  color: #fff; font-size: 1.1rem; cursor: pointer;
+}
+.modal-body { padding: 20px 24px 26px; display: flex; flex-direction: column; gap: 12px; }
+.meta { color: var(--accent-2); font-size: .9rem; }
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.shots img { width: 100%; border-radius: 10px; cursor: zoom-in; }
+
+footer { text-align: center; color: var(--muted); padding: 20px 0; border-top: 1px solid #1f2540; font-size: .85rem; }
+
+/* روابط التحميل المتعددة */
+.links { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.link-btn { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #262d52; }
+.link-btn.best { background: linear-gradient(135deg, var(--accent), #5a3fe0); }
+.badge { background: var(--accent-2); color: #06281f; font-size: .72rem; font-weight: 800; padding: 1px 10px; border-radius: 999px; }
+.btn.disabled { background: #2a3050; color: var(--muted); pointer-events: none; }

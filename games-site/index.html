@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مكتبة الألعاب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>🎮 مكتبة الألعاب</h1>
+      <p>حمّل ألعابك المفضلة بضغطة واحدة</p>
+      <div class="controls">
+        <input id="search" type="search" placeholder="ابحث عن لعبة..." aria-label="بحث">
+        <select id="category" aria-label="التصنيف">
+          <option value="">كل التصنيفات</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <p id="count" class="count"></p>
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <p id="empty" class="empty" hidden>لا توجد ألعاب مطابقة للبحث.</p>
+  </main>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true">
+      <button id="modal-close" class="modal-close" aria-label="إغلاق">✕</button>
+      <img id="modal-img" alt="">
+      <div class="modal-body">
+        <h2 id="modal-title"></h2>
+        <p class="meta" id="modal-meta"></p>
+        <p id="modal-desc"></p>
+        <div id="modal-shots" class="shots"></div>
+        <div id="modal-links" class="links"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">© <span id="year"></span> مكتبة الألعاب</div>
+  </footer>
+
+  <script src="games.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
